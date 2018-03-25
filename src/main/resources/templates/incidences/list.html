@@ -31,6 +31,7 @@
 									<td th:text="${incidence.state}"></td>
 									<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
 									<td><a th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>
+									<td><a th:href="#{'/incidences/close/' + incidence.id}">Cerrar Incidencia</a></td>
 								</tr>
 							</table>
 						</div>
