@@ -53,6 +53,6 @@ public class IncidenceController {
 		model.addAttribute("operator", operator);
 		model.addAttribute("incidence", incidence);
 		
-		return "/incidences/info";
+		return "/incidences/details";
 	}
 }
