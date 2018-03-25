@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.uniovi.entities.Incidence;
 import com.uniovi.entities.Operator;
 import com.uniovi.repositories.OperatorRepository;
 
@@ -23,12 +24,16 @@ public class OperatorService {
 	}
 
 	public void addOperator(Operator operator) {
-		operator.setPassword(bCryptPasswordEncoder.encode(operator.getPassword())); //Encripto la contraseña
+		operator.setPassword(bCryptPasswordEncoder.encode(operator.getPassword())); // Encripto la contraseña
 		operatorRepository.save(operator);
 	}
-	
+
+	public void assignIncidence(Incidence incidence) {
+		operatorRepository.findLikely(incidence.getTagList()).get(0).assignIncidence(incidence);
+	}
+
 	public Operator getOperator() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); //Obtengo el operador
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); // Obtengo el operador
 		String username = auth.getName();
 		Operator operator = findByName(username);
 		return operator;

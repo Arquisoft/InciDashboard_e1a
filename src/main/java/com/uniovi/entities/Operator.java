@@ -61,4 +61,8 @@ public class Operator {
 		return incidences;
 	}
 
+	public void assignIncidence(Incidence incidence) {
+		incidences.add(incidence);
+	}
+
 }
