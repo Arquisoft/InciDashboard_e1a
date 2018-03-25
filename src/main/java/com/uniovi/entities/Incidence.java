@@ -358,5 +358,9 @@ public class Incidence {
 	public void setOperator(Operator operator) {
 		this.operator = operator;
 	}
+	
+	public void setStatus(Status status) {
+		this.state = status;
+	}
 
 }

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head th:replace="fragments/head" />
+<body>
+	<div id="container">
+		<nav th:replace="fragments/nav" />
+
+		<div>
+			<div>
+				<div>
+					<div>
+						<div>
+							<h3>Incidencias</h3>
+							<p >Lista de las incidencias</p>
+						</div>
+						<div class="panel-body">
+							<table id="tablaIncidencias">
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Descripcion</th>
+									<th>Agente</th>
+									<th>State</th>
+								</tr>
+								<tr th:each="incidence : ${incidences}">									
+									<th><a class="incidence" th:href="${incidence.id}"
+										th:text="${incidence.id}"></a></th>
+									<td th:text="${incidence.name}"></td>
+									<td th:text="${incidence.description}"></td>
+									<td th:text="${incidence.nombreAgente}"></td>
+									<td th:text="${incidence.state}"></td>
+									<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
+									<td><a th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<footer class="footer" th:replace="fragments/footer :: footer" />
+	</div>
+</body>
+
+</html>

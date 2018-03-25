@@ -38,6 +38,14 @@ public class Operator {
 	public Operator(String name, String password) {
 		super();
 		this.name = name;
+		this.setPassword(password);
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -57,6 +65,8 @@ public class Operator {
 		this.password = password;
 	}
 	
-	
+	public List<Incidence> getIncidences(){
+		return incidences;
+	}
 
 }
