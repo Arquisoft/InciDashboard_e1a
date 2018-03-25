@@ -57,15 +57,7 @@ public class Operator {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public List<Incidence> getIncidences(){
+	public List<Incidence> getIncidences() {
 		return incidences;
 	}
 
