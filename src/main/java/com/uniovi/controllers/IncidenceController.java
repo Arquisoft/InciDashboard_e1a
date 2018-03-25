@@ -40,19 +40,10 @@ public class IncidenceController {
 		return "/incidences/list";
 	}
 	
-	@RequestMapping(value = "/incidences/{id}", method = RequestMethod.GET)
-	public String info(Model model, @PathVariable Long id) {
-		
-		Incidence incidence = incidenceService.verIncidencia(id); //Obtener incidencia especifica
-		Operator operator = operatorService.getOperator(); //Operador actual
-		List<Notification> notifications = new ArrayList<Notification>(); 
-		operator.getIncidences().forEach(p-> notifications.add(new Notification(p)));   //Creo la lista de notificaciones para mostrar
+	@RequestMapping("/incidences/details/{id}" )
+	public String getDetail(Model model, @PathVariable Long id){
+		model.addAttribute("incidence", incidenceService.verIncidencia(id));
+		return "incidences/details";
 
-		//Añado todo al modelo
-		model.addAttribute("notifications", notifications);
-		model.addAttribute("operator", operator);
-		model.addAttribute("incidence", incidence);
-		
-		return "/incidences/details";
 	}
 }
