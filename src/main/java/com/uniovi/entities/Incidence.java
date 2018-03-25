@@ -234,7 +234,7 @@ public class Incidence {
 		Map<String, String> out = new HashMap<>();
 		for (String propertie : properties.split(",")) {
 			if (propertie.contains(":"))
-				out.put(propertie.split(":")[0], propertie.split(":")[1]);
+				out.put(propertie.split(":")[0].trim(), propertie.split(":")[1]);
 		}
 		return out;
 	}
