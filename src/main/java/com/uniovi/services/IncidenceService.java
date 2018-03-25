@@ -30,4 +30,8 @@ public class IncidenceService {
 		incidenceRepository.findAll().forEach(incidences::add);
 		return incidences;
 	}
+
+	public Incidence verIncidencia(Long id) {
+		return incidenceRepository.findOne(id);
+	}
 }

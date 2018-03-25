@@ -29,7 +29,7 @@ public class MessageListener {
 	private OperatorService operatorService;
 
 	@KafkaListener(topics = "exampleTopic")
-	public void listen(String data) {
+	public void ReceiveIncidence(String data) {
 		logger.info("New message received: \"" + data + "\"");
 		Incidence incidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
 		incidenceService.addIncidence(incidence);
