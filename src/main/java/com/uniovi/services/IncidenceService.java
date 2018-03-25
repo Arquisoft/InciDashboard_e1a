@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Incidence;
+import com.uniovi.entities.Operator;
 import com.uniovi.repositories.IncidenceRepository;
 
 ;
@@ -33,5 +34,17 @@ public class IncidenceService {
 
 	public Incidence verIncidencia(Long id) {
 		return incidenceRepository.findOne(id);
+	}
+
+	public List<Incidence> searchIncidencesByNameAndDescription(String searchText, Operator operator){
+		List<Incidence> incidences = new ArrayList<Incidence>();
+		List<Incidence> incidencesTotal = incidenceRepository.searchByDescriptionAndName(searchText);
+		for (Incidence incidence : incidencesTotal) {
+			if (incidence.getOperator().equals(operator)) {
+				incidences.add(incidence);
+			}
+		}
+		
+		return incidences;
 	}
 }

@@ -11,7 +11,16 @@
 					<div>
 						<div>
 							<h3>Incidencias</h3>
-							<p >Lista de las incidencias</p>
+							<form class="navbar-form" action="/incidences/list">
+								<div class="form-group">
+									<input name="searchText" type="text" class="form-control"
+										size="50"
+										placeholder="Buscar por descripción o nombre del alumno">
+								</div>
+								<button type="submit" class="btn btn-default">Buscar</button>
+							</form>
+
+							<p>Lista de las incidencias</p>
 						</div>
 						<div class="panel-body">
 							<table id="tablaIncidencias">
@@ -22,7 +31,7 @@
 									<th>Agente</th>
 									<th>State</th>
 								</tr>
-								<tr th:each="incidence : ${incidences}">									
+								<tr th:each="incidence : ${incidences}">
 									<th><a class="incidence" th:href="${incidence.id}"
 										th:text="${incidence.id}"></a></th>
 									<td th:text="${incidence.name}"></td>
@@ -31,7 +40,8 @@
 									<td th:text="${incidence.state}"></td>
 									<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
 									<td><a th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>
-									<td><a th:href="#{'/incidences/close/' + incidence.id}">Cerrar Incidencia</a></td>
+									<td><a th:href="#{'/incidences/close/' + incidence.id}">Cerrar
+											Incidencia</a></td>
 								</tr>
 							</table>
 						</div>
