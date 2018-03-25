@@ -21,9 +21,13 @@ public class IncidenceService {
 	@Autowired
 	FilterService filterService;
 
+	@Autowired
+	OperatorService operatorService;
+
 	public void addIncidence(Incidence incidence) {
 		incidenceRepository.save(incidence);
 		filterService.filterFields(incidence);
+		operatorService.assignIncidence(incidence);
 	}
 
 	public List<Incidence> findAll() {
