@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,5 +46,14 @@ public class IncidenceController {
 		model.addAttribute("incidence", incidenceService.verIncidencia(id));
 		return "incidences/details";
 
+	}
+	
+	@RequestMapping(value="/incidences/edit/{id}", method=RequestMethod.POST)
+	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Incidence incidence){
+		Incidence original = incidenceService.verIncidencia(id);
+
+		original.setStatus(incidence.getState()); //Otra opcion es hacerlo en los templates con javascript
+		incidenceService.addIncidence(original);
+		return "redirect:/incidences/details/"+id;
 	}
 }
