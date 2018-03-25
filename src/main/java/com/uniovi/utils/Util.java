@@ -2,6 +2,9 @@ package com.uniovi.utils;
 
 import java.io.IOException;
 
+import org.apache.catalina.mapper.Mapper;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -14,7 +17,7 @@ public class Util {
 
 	public static String IncidenceToJSON(Incidence incidence) {
 		try {
-			return mapper.writeValueAsString(incidence);
+			return getMapper().writeValueAsString(incidence);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,7 +27,7 @@ public class Util {
 
 	public static Incidence JsonToIncidence(String JSON) {
 		try {
-			return mapper.readValue(JSON, Incidence.class);
+			return getMapper().readValue(JSON, Incidence.class);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,6 +39,14 @@ public class Util {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static ObjectMapper getMapper() {
+		if (mapper == null) {
+			mapper = new ObjectMapper();
+			mapper.setSerializationInclusion(Include.NON_NULL);
+		}
+		return mapper;
 	}
 
 }

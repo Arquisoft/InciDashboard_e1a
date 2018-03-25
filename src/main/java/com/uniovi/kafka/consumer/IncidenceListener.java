@@ -18,9 +18,9 @@ import com.uniovi.utils.Util;
  * Created by herminio on 28/12/16.
  */
 @ManagedBean
-public class MessageListener {
+public class IncidenceListener {
 
-	private static final Logger logger = Logger.getLogger(MessageListener.class);
+	private static final Logger logger = Logger.getLogger(IncidenceListener.class);
 
 	@Autowired
 	private IncidenceService incidenceService;
@@ -28,7 +28,7 @@ public class MessageListener {
 	@Autowired
 	private OperatorService operatorService;
 
-	@KafkaListener(topics = "exampleTopic")
+	@KafkaListener(topics = "incidence")
 	public void ReceiveIncidence(String data) {
 		logger.info("New message received: \"" + data + "\"");
 		Incidence incidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
