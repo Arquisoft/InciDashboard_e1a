@@ -17,8 +17,12 @@ public class IncidenceService {
 	@Autowired
 	IncidenceRepository incidenceRepository;
 
+	@Autowired
+	FilterService filterService;
+
 	public void addIncidence(Incidence incidence) {
 		incidenceRepository.save(incidence);
+		filterService.filterFields(incidence);
 	}
 
 	public List<Incidence> findAll() {

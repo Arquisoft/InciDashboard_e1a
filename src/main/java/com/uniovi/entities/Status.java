@@ -1,7 +1,11 @@
 package com.uniovi.entities;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public enum Status {
-	OPEN,
+	OPENED,
 	CLOSED,
-	ASIGNED
+	ASSIGNED,
+	CANCELLED
 }

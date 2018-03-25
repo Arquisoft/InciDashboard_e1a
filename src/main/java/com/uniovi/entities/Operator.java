@@ -35,4 +35,12 @@ public class Operator {
 		this.name = name;
 	}
 
+	public Operator(String name, String password) {
+		super();
+		this.name = name;
+		this.password = password;
+	}
+	
+	
+
 }

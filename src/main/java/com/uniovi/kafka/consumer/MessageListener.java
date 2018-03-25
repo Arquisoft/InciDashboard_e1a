@@ -20,26 +20,19 @@ import com.uniovi.utils.Util;
 @ManagedBean
 public class MessageListener {
 
-    private static final Logger logger = Logger.getLogger(MessageListener.class);
-    
-    @Autowired
-    private IncidenceService incidenceService;
-    
-    @Autowired
-    private OperatorService operatorService;
+	private static final Logger logger = Logger.getLogger(MessageListener.class);
 
-    @KafkaListener(topics = "exampleTopic")
-    public void listen(String data) {
-        logger.info("New message received: \"" + data + "\"");
-        Incidence incidence = createIncidence(data);		//Pasar a JSON y poner filtro valores peligrosos
-        incidenceService.addIncidence(incidence);
-    }
-    
-    public  Incidence createIncidence(String data) {
-		Operator op = operatorService.findByName("Paco");
-		return new Incidence(op, data, "prueba", new Date());
+	@Autowired
+	private IncidenceService incidenceService;
+
+	@Autowired
+	private OperatorService operatorService;
+
+	@KafkaListener(topics = "exampleTopic")
+	public void listen(String data) {
+		logger.info("New message received: \"" + data + "\"");
+		Incidence incidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
+		incidenceService.addIncidence(incidence);
 	}
-
-
 
 }
