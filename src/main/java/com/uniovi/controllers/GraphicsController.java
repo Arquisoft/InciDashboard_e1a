@@ -26,7 +26,7 @@ public class GraphicsController {
 		model.addAttribute("numberOfAssignedIncidences", incidenceService.countIncidencesType(Status.ASSIGNED));
 		model.addAttribute("operatorWithMoreIncidences", operaService.findOperatorWithMoreIncidences());
 		
-		return "estadisticas";
+		return "stadistics";
 	}
 
 	
