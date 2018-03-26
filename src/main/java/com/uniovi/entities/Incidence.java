@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -39,6 +42,7 @@ public class Incidence {
 	private String tipoAgente;
 	private String etiquetas;
 	private String properties = "";
+	@Enumerated(EnumType.STRING)
 	private Status state = Status.OPENED;
 	private String expiration;
 	private String comments;
@@ -372,4 +376,9 @@ public class Incidence {
 	public void setPriority(Double priority) {
 		this.priority = priority;
 	}
+	
+	public void assigned() {
+		this.state = Status.ASSIGNED;
+	}
+	
 }

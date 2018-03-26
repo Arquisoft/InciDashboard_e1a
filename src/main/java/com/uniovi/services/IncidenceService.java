@@ -41,7 +41,7 @@ public class IncidenceService {
 		return incidenceRepository.findOne(id);
 	}
 
-	public List<Incidence> searchIncidencesByNameAndDescription(String searchText, Operator operator){
+	public List<Incidence> searchIncidencesByNameAndDescription(String searchText, Operator operator) {
 		List<Incidence> incidences = new ArrayList<Incidence>();
 		List<Incidence> incidencesTotal = incidenceRepository.searchByDescriptionAndName(searchText);
 		for (Incidence incidence : incidencesTotal) {
@@ -49,15 +49,15 @@ public class IncidenceService {
 				incidences.add(incidence);
 			}
 		}
-		
+
 		return incidences;
 	}
-	
+
 	public int countIncidencesType(Status status) {
 		List<Incidence> incidences = findAll();
-		int cont=0;
+		int cont = 0;
 		for (Incidence incidence : incidences) {
-			if(incidence.getState().equals(status))
+			if (incidence.getState().equals(status))
 				cont++;
 		}
 		return cont;
