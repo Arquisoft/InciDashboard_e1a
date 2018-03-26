@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.uniovi.entities.Incidence;
 import com.uniovi.entities.Operator;
+import com.uniovi.kafka.producer.KafkaProducer;
 import com.uniovi.services.IncidenceService;
 import com.uniovi.services.OperatorService;
 import com.uniovi.services.SecurityService;
@@ -29,7 +30,7 @@ public class OperatorTest {
 	private SecurityService securityService;
 	
 	@Autowired
-	private IncidenceService incidenceService;
+	private KafkaProducer kafkaProducer;
 
 	private static Operator operator1;
 	private static Operator operator2;
@@ -105,7 +106,7 @@ public class OperatorTest {
 	}
 	
 	@Test
-	public void testAssingIncidences() {
+	public void testAssingIncidences() throws InterruptedException {
 		
 		Incidence incidence1 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence2 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");
@@ -115,28 +116,32 @@ public class OperatorTest {
 		Incidence incidence6 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence7 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
 		
-		incidenceService.addIncidence(incidence1);
-		incidenceService.addIncidence(incidence2);
-		incidenceService.addIncidence(incidence3);
-		incidenceService.addIncidence(incidence4);
-		
-		//Asignamos una incidencia
-		operatorService.assignIncidence(incidence1); //op1
-		
+		kafkaProducer.send("incidence", incidence1.toJson());
+		Thread.sleep(5000);
 		//Comprobamos que se asigna
-		assertEquals(operator1.getNumberOfIncidences(), 1);
+		System.err.println(operatorService.findByName("uo111111").getIncidences());
+		System.err.println(operator1.getIncidences());
+		System.err.println(operator2.getIncidences());
+		System.err.println(operator3.getIncidences());
+		System.err.println(operator4.getIncidences());
+		System.err.println(operator5.getIncidences());
+		assertEquals(1 ,operator1.getNumberOfIncidences());
 		
-		operator2.assignIncidence(incidence2); //op2
-		assertEquals(operator2.getNumberOfIncidences(), 1);
+		kafkaProducer.send("incidence", incidence2.toJson());
+		wait(2);
+		assertEquals(1 ,operator2.getNumberOfIncidences());
 		
-		operator3.assignIncidence(incidence3); //op3
-		assertEquals(operator3.getNumberOfIncidences(), 1);
+		kafkaProducer.send("incidence", incidence3.toJson());
+		wait(2);
+		assertEquals(1 ,operator3.getNumberOfIncidences());
 		
-		operator4.assignIncidence(incidence4); //op4
-		assertEquals(operator4.getNumberOfIncidences(), 1);
+		kafkaProducer.send("incidence", incidence4.toJson());
+		wait(2);
+		assertEquals(1 ,operator4.getNumberOfIncidences());
 		
-		operator5.assignIncidence(incidence5); //op5
-		assertEquals(operator5.getNumberOfIncidences(), 1);
+		kafkaProducer.send("incidence", incidence5.toJson());
+		wait(2);
+		assertEquals(1 ,operator5.getNumberOfIncidences());
 		
 		// Buscamos el operador con mas incidencias
 		operator1.assignIncidence(incidence6);
