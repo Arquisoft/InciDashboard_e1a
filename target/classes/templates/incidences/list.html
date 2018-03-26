@@ -12,32 +12,37 @@
 					<div class="form-group">
 						<input name="searchText" type="text" class="form-control"
 							size="50"
-							placeholder="Buscar por descripción o nombre del alumno" />
+							placeholder="Buscar por descripción o nombre o tags" />
 					</div>
 					<button type="submit" class="btn btn-default">Buscar</button>
 				</form>
 
 				<p>Lista de las incidencias</p>
 			</div>
-			<div class="panel-body">
-				<table id="tablaIncidencias">
-					<tr>
-						<th>ID</th>
-						<th>Nombre</th>
-						<th>Descripcion</th>
-						<th>Agente</th>
-						<th>State</th>
-					</tr>
-					<tr th:each="incidence : ${incidences}">
-						<td th:text="${incidence.id}"></td>
-						<td th:text="${incidence.name}"></td>
-						<td th:text="${incidence.description}"></td>
-						<td th:text="${incidence.nombreAgente}"></td>
-						<td th:text="${incidence.state}"></td>
-						<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
-						<td><a th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>
-						<td><a th:href="#{'/incidences/close/' + incidence.id}">Cerrar Incidencia</a></td>
-					</tr>
+			<div  class="panel-body">
+				<table  class="table table-hover"  id="tablaIncidencias">
+					<thead>
+						<tr>
+							<th class="col-md-1">ID</th>
+							<th class="col-md-1">Nombre</th>
+							<th class="col-md-1">Descripcion</th>
+							<th class="col-md-1">Agente</th>
+							<th class="col-md-1">State</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="incidence : ${incidences}">
+							<td th:text="${incidence.id}"></td>
+							<td th:text="${incidence.name}"></td>
+							<td th:text="${incidence.description}"></td>
+							<td th:text="${incidence.nombreAgente}"></td>
+							<td th:text="${incidence.state}"></td>
+							<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
+							<td><a th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>
+							<td><a th:href="#{'/incidences/close/' + incidence.id}">Cerrar
+									Incidencia</a></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>

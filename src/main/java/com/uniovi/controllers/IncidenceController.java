@@ -31,8 +31,8 @@ public class IncidenceController {
 		Operator operator = operatorService.getOperator();//Operador especifico
 		List<Incidence> incidences;
 		List<Notification> notifications;
-		
-		if (searchText != null && !searchText.isEmpty()) {
+
+		if (searchText == null || searchText.isEmpty()) {
 			incidences = operator.getIncidences(); //Obtengo las incidencias
 		} else {
 			incidences = incidenceService.searchIncidencesByNameAndDescription(searchText, operator);

@@ -29,6 +29,7 @@ public class IncidenceService {
 		incidenceRepository.save(incidence);
 		filterService.filterFields(incidence);
 		operatorService.assignIncidence(incidence);
+		incidenceRepository.save(incidence);
 	}
 
 	public List<Incidence> findAll() {
@@ -43,6 +44,7 @@ public class IncidenceService {
 
 	public List<Incidence> searchIncidencesByNameAndDescription(String searchText, Operator operator) {
 		List<Incidence> incidences = new ArrayList<Incidence>();
+		searchText = "%" + searchText + "%";
 		List<Incidence> incidencesTotal = incidenceRepository.searchByDescriptionAndName(searchText);
 		for (Incidence incidence : incidencesTotal) {
 			if (incidence.getOperator().equals(operator)) {

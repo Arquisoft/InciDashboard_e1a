@@ -46,7 +46,6 @@ public class OperatorService {
 		op.assignIncidence(incidence);
 		incidence.setOperator(op);
 		incidence.assigned();
-		incidenceRepository.save(incidence); // BUG
 	}
 
 	public Operator getOperator() {
