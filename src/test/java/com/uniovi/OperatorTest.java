@@ -108,7 +108,7 @@ public class OperatorTest {
 	@Test
 	public void testAssingIncidences() throws InterruptedException {
 		
-		Incidence incidence1 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
+		Incidence incidence1 = new Incidence("normalilla", "normalilla", "", "normalilla", "Paco", "123456", "Agent");
 		Incidence incidence2 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence3 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence4 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");
@@ -125,23 +125,22 @@ public class OperatorTest {
 		System.err.println(operator3.getIncidences());
 		System.err.println(operator4.getIncidences());
 		System.err.println(operator5.getIncidences());
-		assertEquals(1 ,operator1.getNumberOfIncidences());
 		
 		kafkaProducer.send("incidence", incidence2.toJson());
-		wait(2);
-		assertEquals(1 ,operator2.getNumberOfIncidences());
+		Thread.sleep(2000);
+		assertEquals(1 ,operator1.getNumberOfIncidences());
 		
 		kafkaProducer.send("incidence", incidence3.toJson());
-		wait(2);
-		assertEquals(1 ,operator3.getNumberOfIncidences());
+		Thread.sleep(2000);
+		assertEquals(1 ,operator2.getNumberOfIncidences());
 		
 		kafkaProducer.send("incidence", incidence4.toJson());
-		wait(2);
-		assertEquals(1 ,operator4.getNumberOfIncidences());
+		Thread.sleep(2000);
+		assertEquals(1 ,operator3.getNumberOfIncidences());
 		
 		kafkaProducer.send("incidence", incidence5.toJson());
-		wait(2);
-		assertEquals(1 ,operator5.getNumberOfIncidences());
+		Thread.sleep(2000);
+		assertEquals(1 ,operator4.getNumberOfIncidences());
 		
 		// Buscamos el operador con mas incidencias
 		operator1.assignIncidence(incidence6);

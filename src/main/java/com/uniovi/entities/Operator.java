@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Operator {
 
@@ -23,6 +25,7 @@ public class Operator {
 	private String name;
 
 	@OneToMany(mappedBy = "operator", cascade = CascadeType.ALL, fetch=FetchType.EAGER )
+	@JsonIgnoreProperties(value = "operator")
 	private List<Incidence> incidences = new ArrayList<>();
 
 	private String password;
