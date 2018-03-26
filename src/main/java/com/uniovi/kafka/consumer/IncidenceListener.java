@@ -1,7 +1,5 @@
 package com.uniovi.kafka.consumer;
 
-import java.util.Date;
-
 import javax.annotation.ManagedBean;
 
 import org.apache.log4j.Logger;
@@ -9,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 
 import com.uniovi.entities.Incidence;
-import com.uniovi.entities.Operator;
 import com.uniovi.services.IncidenceService;
 import com.uniovi.services.OperatorService;
 import com.uniovi.utils.Util;

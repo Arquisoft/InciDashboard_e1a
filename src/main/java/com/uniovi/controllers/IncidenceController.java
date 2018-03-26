@@ -65,9 +65,9 @@ public class IncidenceController {
 	}
 	
 	@RequestMapping("/incidences/close/{id}" )
-	public String delete(@PathVariable Long id){
+	public String close(@PathVariable Long id){
 		Incidence incidence = incidenceService.verIncidencia(id);
 		incidence.close();
-		return "redirect:/user/list";
+		return "redirect:/incidences/list";
 	}
 }
