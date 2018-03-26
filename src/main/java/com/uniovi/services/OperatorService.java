@@ -1,5 +1,8 @@
 package com.uniovi.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +25,12 @@ public class OperatorService {
 	public Operator findByName(String operator) {
 		return operatorRepository.findByName(operator);
 	}
+	
+	public List<Operator> findAll() {
+		List<Operator> operators = new ArrayList<>();
+		operatorRepository.findAll().forEach(operators::add);
+		return operators;
+	}
 
 	public void addOperator(Operator operator) {
 		operator.setPassword(bCryptPasswordEncoder.encode(operator.getPassword())); // Encripto la contraseña
@@ -37,6 +46,16 @@ public class OperatorService {
 		String username = auth.getName();
 		Operator operator = findByName(username);
 		return operator;
+	}
+	
+	public Operator findOperatorWithMoreIncidences() {
+		List<Operator> operadores = findAll();
+		Operator elegido = operadores.get(0);
+		for (Operator op : operadores) {
+			if(op.getNumberOfIncidences() > elegido.getNumberOfIncidences())
+				elegido = op;
+		}
+		return elegido;
 	}
 
 }

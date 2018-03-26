@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Incidence;
 import com.uniovi.entities.Operator;
+import com.uniovi.entities.Status;
 import com.uniovi.repositories.IncidenceRepository;
 
 ;
@@ -50,5 +51,15 @@ public class IncidenceService {
 		}
 		
 		return incidences;
+	}
+	
+	public int countIncidencesType(Status status) {
+		List<Incidence> incidences = findAll();
+		int cont=0;
+		for (Incidence incidence : incidences) {
+			if(incidence.getState().equals(status))
+				cont++;
+		}
+		return cont;
 	}
 }

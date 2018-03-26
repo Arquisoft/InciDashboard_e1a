@@ -60,6 +60,10 @@ public class Operator {
 	public List<Incidence> getIncidences() {
 		return incidences;
 	}
+	
+	public int getNumberOfIncidences() {
+		return incidences.size();
+	}
 
 	public void assignIncidence(Incidence incidence) {
 		incidences.add(incidence);
