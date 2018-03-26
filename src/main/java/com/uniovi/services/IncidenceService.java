@@ -54,6 +54,11 @@ public class IncidenceService {
 
 		return incidences;
 	}
+	
+	public void close(Incidence incidence) {
+		incidence.close();
+		incidenceRepository.save(incidence);
+	}
 
 	public int countIncidencesType(Status status) {
 		List<Incidence> incidences = findAll();

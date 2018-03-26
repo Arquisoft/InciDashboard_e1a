@@ -32,7 +32,7 @@ protected void configure(HttpSecurity http) throws Exception {
         .formLogin()
              .loginPage("/login")
              .permitAll()
-             //.defaultSuccessUrl("/user/list")
+             .defaultSuccessUrl("/incidences/list")
              .and()
         .logout()
            .permitAll();

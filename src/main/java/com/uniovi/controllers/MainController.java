@@ -18,40 +18,10 @@ public class MainController {
 
     private static final Logger logger = Logger.getLogger(MainController.class);
     
-    @Autowired
-    IncidenceService incidenceService;
-    
-    @Autowired
-    private KafkaProducer kafkaProducer;
-
     @RequestMapping("/")
     public String landing(Model model) {
-    	model.addAttribute("incidencesList", incidenceService.findAll());
-        return "index";
+        return "redirect:incidences/list";
     }
 
-    /**
-     * Comprobar conexión con kafka automatizar luego
-     * @param model
-     * @param incidence
-     * @return
-     */
-    @RequestMapping(value="/send", method = RequestMethod.POST)
-    public String send(Model model, @ModelAttribute Incidence incidence) {
-        kafkaProducer.send("exampleTopic", incidence.toString());
-        return "incidences/add";
-    }
-
-    /**
-     * Pa probar
-     * @param model
-     * @param incidence
-     * @return
-     */
-    @RequestMapping("/send")
-    public String send(Model model) {
-    	model.addAttribute("incidence", new Incidence());
-        return "incidences/add";
-    }
 
 }
