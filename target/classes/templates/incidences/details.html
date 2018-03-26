@@ -4,60 +4,62 @@
 <head th:replace="fragments/head" />
 
 <body>
-	<div id="container">
-		<nav th:replace="fragments/nav">
-			<div class="container">
-				<h2>Detalles de la incidencia</h2>
-				<div class="panel panel-default">
-					<div class="panel-heading">Nombre</div>
-					<div class="panel-body" th:text="${incidence.name}"></div>
+	<form th:action="@{/details}" th:object="${incidence}" method="POST">
+		<div id="container">
+			<nav th:replace="fragments/nav">
+				<div class="container">
+					<h2>Detalles de la incidencia</h2>
+					<div class="panel panel-default">
+						<div class="panel-heading">Nombre</div>
+						<div class="panel-body" th:text="${incidence.name}"></div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Descripción</div>
+						<div class="panel-body" th:text="${incidence.description}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Localización</div>
+						<div class="panel-body" th:text="${incidence.location}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Nombre del agente</div>
+						<div class="panel-body" th:text="${incidence.nombreAgente}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Tipo de agente</div>
+						<div class="panel-body" th:text="${incidence.tipoAgente}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Etiquetas</div>
+						<div class="panel-body" th:text="${incidence.etiquetas}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Propiedades</div>
+						<div class="panel-body" th:text="${incidence.properties}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Estado</div>
+						<div class="panel-body" th:text="${incidence.state}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Expiración</div>
+						<div class="panel-body" th:text="${incidence.expiration}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Comentarios</div>
+						<div class="panel-body" th:text="${incidence.comments}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Información adicional</div>
+						<div class="panel-body" th:text="${incidence.additionalInfo}"></div>
+					</div>
+					<div>
+						<div class="panel-heading">Operador</div>
+						<div class="panel-body" th:text="${incidence.operator.name}"></div>
+					</div>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">Descripción</div>
-					<div class="panel-body" th:text="${incidence.description}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Localización</div>
-					<div class="panel-body" th:text="${incidence.location}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Nombre del agente</div>
-					<div class="panel-body" th:text="${incidence.nombreAgente}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Tipo de agente</div>
-					<div class="panel-body" th:text="${incidence.tipoAgente}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Etiquetas</div>
-					<div class="panel-body" th:text="${incidence.etiquetas}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Propiedades</div>
-					<div class="panel-body" th:text="${incidence.properties}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Estado</div>
-					<div class="panel-body" th:text="${incidence.state}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Expiración</div>
-					<div class="panel-body" th:text="${incidence.expiration}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Comentarios</div>
-					<div class="panel-body" th:text="${incidence.comments}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Información adicional</div>
-					<div class="panel-body" th:text="${incidence.additionalInfo}"></div>
-				</div>
-				<div>
-					<div class="panel-heading">Operador</div>
-					<div class="panel-body" th:text="${incidence.operator.name}"></div>
-				</div>
-			</div>
-		</nav>
-	</div>
+			</nav>
+		</div>
+	</form>
 </body>
 </html>
