@@ -18,9 +18,6 @@ public class InsertSampleDataService {
 	private OperatorService operatorService;
 
 	@Autowired
-	private IncidenceService incidenceService;
-
-	@Autowired
 	private FilterService filterService;
 
 	@Autowired
