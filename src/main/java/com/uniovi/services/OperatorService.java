@@ -38,7 +38,7 @@ public class OperatorService {
 	}
 
 	public void assignIncidence(Incidence incidence) {
-		operatorRepository.findLikely(incidence.getTagList()).get(0).assignIncidence(incidence);
+		findOperatorWithLessIncidences().assignIncidence(incidence);
 	}
 
 	public Operator getOperator() {
@@ -53,6 +53,16 @@ public class OperatorService {
 		Operator elegido = operadores.get(0);
 		for (Operator op : operadores) {
 			if(op.getNumberOfIncidences() > elegido.getNumberOfIncidences())
+				elegido = op;
+		}
+		return elegido;
+	}
+	
+	public Operator findOperatorWithLessIncidences() {
+		List<Operator> operadores = findAll();
+		Operator elegido = operadores.get(0);
+		for (Operator op : operadores) {
+			if(op.getNumberOfIncidences() < elegido.getNumberOfIncidences())
 				elegido = op;
 		}
 		return elegido;

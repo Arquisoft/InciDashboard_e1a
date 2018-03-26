@@ -16,6 +16,16 @@ public class Filter {
 
 	private FilterOperation operation;
 
+	private Double priority = 1.0;
+
+	public Filter(String property, String value, FilterOperation operation, double priority) {
+		super();
+		this.property = property;
+		this.value = value;
+		this.operation = operation;
+		this.priority = priority;
+	}
+
 	public Filter(String property, String value, FilterOperation operation) {
 		super();
 		this.property = property;
@@ -90,6 +100,14 @@ public class Filter {
 	@Override
 	public String toString() {
 		return "Filter [property=" + property + ", operation=" + operation + " value=" + value + "]";
+	}
+
+	public Double getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Double priority) {
+		this.priority = priority;
 	}
 
 }

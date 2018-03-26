@@ -34,6 +34,10 @@ public class Notification {
 
 	public void addFilter(Filter filter) {
 		filters.add(filter);
+		calculatePriority();
 	}
 
+	private void calculatePriority() {
+		incidence.setPriority(filters.stream().mapToDouble(x -> x.getPriority()).sum());
+	}
 }

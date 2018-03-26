@@ -44,6 +44,8 @@ public class Incidence {
 	private String comments;
 	private String additionalInfo;
 
+	private Double priority;
+
 	@ManyToOne
 	private Operator operator;
 
@@ -358,9 +360,16 @@ public class Incidence {
 	public void setOperator(Operator operator) {
 		this.operator = operator;
 	}
-	
+
 	public void setStatus(Status status) {
 		this.state = status;
 	}
 
+	public Double getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Double priority) {
+		this.priority = priority;
+	}
 }
