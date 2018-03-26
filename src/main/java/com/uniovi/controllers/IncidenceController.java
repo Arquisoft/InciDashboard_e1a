@@ -60,11 +60,16 @@ public class IncidenceController {
 		Incidence original = incidenceService.verIncidencia(id);
 
 		original.setStatus(incidence.getState()); //Otra opcion es hacerlo en los templates con javascript
-		incidenceService.addIncidence(original);
+		incidenceService.updateIncidence(original);
 		return "redirect:/incidences/details/"+id;
 	}
 	
-	
+	@RequestMapping(value="/incidences/edit/{id}", method=RequestMethod.GET)
+	public String setEditt(Model model, @PathVariable Long id){
+		Incidence original = incidenceService.verIncidencia(id);
+		model.addAttribute("incidence", original);
+		return "incidences/edit";
+	}
 	
 	
 	@RequestMapping("/incidences/close/{id}" )

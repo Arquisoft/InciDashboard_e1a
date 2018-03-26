@@ -29,7 +29,10 @@ public class IncidenceListener {
 	public void ReceiveIncidence(String data) {
 		logger.info("New message received: \"" + data + "\"");
 		Incidence incidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
-		incidenceService.addIncidence(incidence);
+		if (incidence == null)
+			logger.info("No se ha cargado la incidencia" + data);
+		else
+			incidenceService.addIncidence(incidence);
 	}
 
 }

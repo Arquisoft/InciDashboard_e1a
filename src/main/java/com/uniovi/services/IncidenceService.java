@@ -31,6 +31,10 @@ public class IncidenceService {
 		operatorService.assignIncidence(incidence);
 		incidenceRepository.save(incidence);
 	}
+	
+	public void updateIncidence(Incidence incidence) {
+		incidenceRepository.save(incidence);
+	}
 
 	public List<Incidence> findAll() {
 		List<Incidence> incidences = new ArrayList<>();

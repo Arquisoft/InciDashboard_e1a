@@ -382,4 +382,8 @@ public class Incidence {
 		this.state = Status.ASSIGNED;
 	}
 	
+	public boolean Closed() {
+		return this.state == Status.CLOSED;
+	}
+	
 }
