@@ -25,6 +25,7 @@ public class FilterService {
 			compare(incidence, incidence.getPropertyMap().get(key), fieldFilters.get(key.trim()));
 		}
 	}
+	
 
 	public void addFieldFilter(Filter filter) {
 		if (!fieldFilters.containsKey(filter.getProperty()))

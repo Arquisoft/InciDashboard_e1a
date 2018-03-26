@@ -7,15 +7,17 @@
 
 	<nav th:replace="fragments/nav" />
 	<h2>Modificar incidencia</h2>
-	<form th:action="@{'/incidences/edit/' + ${incidence.id}}"
-		th:object="${incidence}" method="POST">
-		<label for="message">Modifique la prioridad: </label> <select
-			name="States" th:field="*{state}">
-			<option value="OPENED">OPENED</option>
-			<option value="CLOSED">CLOSED</option>
-			<option value="ASSIGNED">ASSIGNED</option>
-			<option value="CANCELLED">CANCELLED</option>
-		</select> <input type="submit" value="Send" />
-	</form>
+	<div>
+		<div>
+			<a class="btn btn-info"
+				th:href="${'/incidences/edit/'+ incidence.id + '?status=open'}">Abrir
+				incidencia</a>
+		</div>
+		<div>
+			<a class="btn btn-info"
+				th:href="${'/incidences/edit/' + incidence.id + '?status=cancell'}">Cancelar
+				incidencia</a>
+		</div>
+	</div>
 </body>
 </html>
