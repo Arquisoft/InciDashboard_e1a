@@ -1,7 +1,5 @@
 package com.uniovi.services;
 
-import java.util.Date;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
