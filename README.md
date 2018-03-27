@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Arquisoft/Loader_e1a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciDashboard_e1a)
+[![Build Status](https://travis-ci.org/Arquisoft/InciDashboard_e1a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciDashboard_e1a)
 
 # InciDashboard_e1a
 InciDashboard e1a
