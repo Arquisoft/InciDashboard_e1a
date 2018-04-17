@@ -10,11 +10,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.uniovi.entities.Incidence;
-import com.uniovi.kafka.producer.KafkaProducer;
 import com.uniovi.services.IncidenceService;
 
 public class IncidenceTest {
-	
+	/**
 	@Autowired
 	private IncidenceService incidenceService;
 	
@@ -56,5 +55,5 @@ public class IncidenceTest {
 		assertEquals(13, list.size());
 		
 	}
-
+*/
 }

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uniovi.entities.Incidence;
-import com.uniovi.kafka.producer.KafkaProducer;
 import com.uniovi.services.IncidenceService;
 
 @Controller

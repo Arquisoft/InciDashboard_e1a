@@ -4,12 +4,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.uniovi.entities.*;
 
-import com.uniovi.entities.Incidence;
-import com.uniovi.entities.Operator;
-import com.uniovi.filter.Filter;
-import com.uniovi.filter.FilterOperation;
-import com.uniovi.kafka.producer.KafkaProducer;
 
 @Service
 public class InsertSampleDataService {
@@ -20,8 +16,8 @@ public class InsertSampleDataService {
 	@Autowired
 	private FilterService filterService;
 
-	@Autowired
-	private KafkaProducer kafkaProducer;
+//	@Autowired
+//	private com.asw.Kafka.producer.KafkaProducer kafkaProducer;
 
 	@PostConstruct
 	public void init() {
@@ -29,7 +25,7 @@ public class InsertSampleDataService {
 		Operator operator1 = new Operator("uo111111", "123456");
 
 		operatorService.addOperator(operator1);
-
+/**
 		Incidence incidence1 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence2 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");
 
@@ -59,6 +55,6 @@ public class InsertSampleDataService {
 		kafkaProducer.send("incidence", incidence3.toJson());
 		kafkaProducer.send("incidence", incidence4.toJson());
 		
-		
+	*/	
 	}
 }

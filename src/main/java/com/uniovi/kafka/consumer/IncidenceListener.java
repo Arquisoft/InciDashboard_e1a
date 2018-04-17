@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 
 import com.uniovi.entities.Incidence;
+import com.uniovi.entities.IncidenceReceived;
 import com.uniovi.services.IncidenceService;
 import com.uniovi.services.OperatorService;
 import com.uniovi.utils.Util;
@@ -25,10 +26,11 @@ public class IncidenceListener {
 	@Autowired
 	private OperatorService operatorService;
 
-	@KafkaListener(topics = "incidence")
+	@KafkaListener(topics = "Entities")
 	public void ReceiveIncidence(String data) {
 		logger.info("New message received: \"" + data + "\"");
-		Incidence incidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
+		IncidenceReceived rincidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
+		Incidence incidence = new Incidence(rincidence);
 		if (incidence == null)
 			logger.info("No se ha cargado la incidencia" + data);
 		else

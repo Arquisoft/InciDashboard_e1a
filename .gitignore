@@ -31,3 +31,4 @@ data/hsqldb/data/test.script
 data/hsqldb/data/test.properties
 data/hsqldb/data/test.lck
 target/classes/META-INF/maven/com.uniovi/InciDashboard_e1a/pom.properties
+/target/

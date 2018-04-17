@@ -106,6 +106,17 @@ public class Incidence {
 		this.tipoAgente = tipoAgente;
 	}
 
+	public Incidence(IncidenceReceived incidence) {
+		this.name = incidence.getName();
+		this.description = incidence.getDescripcion();
+		this.location = incidence.getLocation();
+		this.etiquetas = incidence.getEtiquetas();
+		this.properties = incidence.getProperties();
+		this.nombreAgente = incidence.getNombreAgente();
+		this.passwordAgente = incidence.getPasswordAgente();
+		this.tipoAgente = incidence.getTipoAgente();
+	}
+
 	public void addComment(String newComment) {
 		comments = addString(newComment, comments);
 	}
@@ -377,13 +388,13 @@ public class Incidence {
 	public void setPriority(Double priority) {
 		this.priority = priority;
 	}
-	
+
 	public void assigned() {
 		this.state = Status.ASSIGNED;
 	}
-	
+
 	public boolean Closed() {
 		return this.state == Status.CLOSED;
 	}
-	
+
 }
