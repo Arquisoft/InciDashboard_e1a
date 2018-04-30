@@ -26,7 +26,7 @@ public class IncidenceListener {
 	@Autowired
 	private OperatorService operatorService;
 
-	@KafkaListener(topics = "Entities")
+	@KafkaListener(topics = "477f1kw4-Incidences")
 	public void ReceiveIncidence(String data) {
 		logger.info("New message received: \"" + data + "\"");
 		IncidenceReceived rincidence = Util.JsonToIncidence(data); // Pasar a JSON y poner filtro valores peligrosos
