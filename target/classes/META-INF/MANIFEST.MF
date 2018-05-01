@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: InciDashboard_e1a
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: UO250687
+Built-By: fernando
 Implementation-Vendor-Id: com.uniovi
-Build-Jdk: 1.8.0_171
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/InciDashboar
  d_e1a/
 Created-By: Maven Integration for Eclipse
