@@ -22,9 +22,9 @@ public class InsertSampleDataService {
 	@PostConstruct
 	public void init() {
 
-		Operator operator1 = new Operator("uo111111", "123456");
+		//Operator operator1 = new Operator("uo111111", "123456");
 
-		operatorService.addOperator(operator1);
+		//operatorService.addOperator(operator1);
 /**
 		Incidence incidence1 = new Incidence("normal", "normal", "", "normal", "Paco", "123456", "Agent");
 		Incidence incidence2 = new Incidence("incendio", "incendio en Uría", "", "normal", "Paco", "123456", "Agent");

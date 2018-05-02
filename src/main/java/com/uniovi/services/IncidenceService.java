@@ -26,7 +26,6 @@ public class IncidenceService {
 	OperatorService operatorService;
 
 	public void addIncidence(Incidence incidence) {
-		incidenceRepository.save(incidence);
 		filterService.filterFields(incidence);
 		operatorService.assignIncidence(incidence);
 		incidenceRepository.save(incidence);
