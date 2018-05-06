@@ -11,9 +11,6 @@ import com.uniovi.services.OperatorService;
 @Controller
 public class AgentsController {
 
-	@Autowired
-	private OperatorService operatorService;
-
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

@@ -43,9 +43,10 @@ public class OperatorService {
 
 	public void assignIncidence(Incidence incidence) {
 		Operator op = findOperatorWithLessIncidences();
-		op.assignIncidence(incidence);
 		incidence.setOperator(op);
+		op.assignIncidence(incidence);
 		incidence.assigned();
+		operatorRepository.save(op);
 	}
 
 	public Operator getOperator() {

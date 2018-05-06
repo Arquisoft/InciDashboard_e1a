@@ -47,7 +47,7 @@ public class IncidenceController {
 		model.addAttribute("operator", operator);
 		model.addAttribute("incidences", incidences);
 
-		return "/incidences/list";
+		return "incidences/list";
 	}
 
 	@RequestMapping("/incidences/details/{id}")
