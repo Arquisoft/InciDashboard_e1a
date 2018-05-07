@@ -3,10 +3,10 @@ package com.uniovi.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +48,28 @@ public class IncidenceController {
 		model.addAttribute("incidences", incidences);
 
 		return "incidences/list";
+	}
+
+	@RequestMapping(value = "/incidences/list/update", method = RequestMethod.GET, produces = "application/json")
+	public String listar(Model model, @RequestParam(value = "", required = false) String searchText) {
+
+		Operator operator = operatorService.getOperator();// Operador especifico
+		List<Incidence> incidences;
+		List<Notification> notifications;
+
+		if (searchText == null || searchText.isEmpty()) {
+			incidences = operator.getIncidences(); // Obtengo las incidencias
+		} else {
+			incidences = incidenceService.searchIncidencesByNameAndDescription(searchText, operator);
+		}
+		notifications = new ArrayList<Notification>();
+		operator.getIncidences().forEach(p -> notifications.add(new Notification(p))); // Creo la lista de
+																						// notificaciones para mostrar
+
+		JSONArray serialized = new JSONArray();
+		incidences.forEach(x -> serialized.put(x.toJson()));
+
+		return serialized.toString();
 	}
 
 	@RequestMapping("/incidences/details/{id}")

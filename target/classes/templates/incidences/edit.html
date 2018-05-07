@@ -9,12 +9,12 @@
 	<h2>Modificar incidencia</h2>
 	<div>
 		<div>
-			<a class="btn btn-info"
+			<a class="btn btn-info" id="btn-abrir"
 				th:href="${'/incidences/edit/'+ incidence.id + '?status=open'}">Abrir
 				incidencia</a>
 		</div>
 		<div>
-			<a class="btn btn-info"
+			<a class="btn btn-info" id="btn-cancelar"
 				th:href="${'/incidences/edit/' + incidence.id + '?status=cancell'}">Cancelar
 				incidencia</a>
 		</div>

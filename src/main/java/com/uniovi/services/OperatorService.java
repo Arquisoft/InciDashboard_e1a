@@ -49,6 +49,13 @@ public class OperatorService {
 		operatorRepository.save(op);
 	}
 
+	public void assignIncidence(Operator operator, Incidence incidence) {
+		incidence.setOperator(operator);
+		operator.assignIncidence(incidence);
+		incidence.assigned();
+		operatorRepository.save(operator);
+	}
+
 	public Operator getOperator() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); // Obtengo el operador
 		String username = auth.getName();
