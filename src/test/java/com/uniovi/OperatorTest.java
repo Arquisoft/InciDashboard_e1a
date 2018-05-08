@@ -47,14 +47,7 @@ public class OperatorTest {
 		operator2 = new Operator("op2", "123456");
 		operator3 = new Operator("op3", "123456");
 		operator4 = new Operator("op4", "123456");
-		operator5 = new Operator("op5", "123456");
-			
-		operatorService.addOperator(operator1);
-		operatorService.addOperator(operator2);
-		operatorService.addOperator(operator3);
-		operatorService.addOperator(operator4);
-		operatorService.addOperator(operator5);
-		
+		operator5 = new Operator("op5", "123456");		
 		
 		setup = true;
 		}

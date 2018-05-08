@@ -13,7 +13,7 @@
 				<form class="navbar-form" action="/incidences/list">
 					<div class="form-group">
 						<input name="searchText" type="text" class="form-control"
-							size="50" placeholder="Buscar por descripción o nombre o tags" />
+							size="50" placeholder="Buscar por descripciï¿½n o nombre o tags" />
 					</div>
 					<button type="submit" class="btn btn-default">Buscar</button>
 				</form>
@@ -40,8 +40,8 @@
 							<td th:text="${incidence.nombreAgente}"></td>
 							<td th:text="${incidence.state}"></td>
 							<td><a th:href="${'/incidences/details/' +incidence.id}">Detalles</a></td>
-							<td><a th:id="modify${incidence.name}" th:href="${'/incidences/edit/' +incidence.id}">Modificar</a></td>
-							<td><a th:id="close${incidence.name}"th:if="${!incidence.Closed()}"
+							<td><a th:id="modify${incidence.name}" th:href="${'/incidences/edit/' +incidence.id}">Modificar</a></td>					
+							<td ><a th:if="${not incidence.Closed()}" th:id="close${incidence.name}"
 								th:href="${'/incidences/close/' +incidence.id}">Cerrar
 									Incidencia</a></td>
 						</tr>
@@ -52,7 +52,7 @@
 		<footer class="footer" th:replace="fragments/footer :: footer" />
 	</div>
 </body>
-<!-- 
+
 <script th:inline="javascript">
 function actualizarIncidencias(){
 	
@@ -90,12 +90,7 @@ function actualizarTabla(respuesta){
 	}
 }
 
-setInterval(
-		function
-		() {
-			actualizarIncidencias();
-		}, 5000);
+setInterval(actualizarIncidencias, 5000);
 </script>
- -->
 
 </html>

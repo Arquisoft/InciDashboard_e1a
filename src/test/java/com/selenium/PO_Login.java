@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class PO_Login extends PO_View {
 
 	public static void fillForm(WebDriver driver, String user, String passwd) {
-		checkElement(driver, "id", "email");
+		SeleniumUtils.esperarSegundos(driver, 1);
 		WebElement login = driver.findElement(By.name("username"));
 		login.click();
 		login.clear();
@@ -17,7 +17,7 @@ public class PO_Login extends PO_View {
 		name.clear();
 		name.sendKeys(passwd);
 		// Pulsar el boton de Alta.
-		By boton = By.id("boton-login"); // Por qu� toma la clase del elemento y no el atributo clase.
+		By boton = By.className("btn"); // Por qu� toma la clase del elemento y no el atributo clase.
 		driver.findElement(boton).click();
 	}
 
