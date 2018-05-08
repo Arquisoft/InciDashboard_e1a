@@ -40,7 +40,7 @@
 							<td th:text="${incidence.nombreAgente}"></td>
 							<td th:text="${incidence.state}"></td>
 							<td><a th:href="${'/incidences/details/' +incidence.id}">Detalles</a></td>
-							<td><a th:id="modify${incidence.name}" th:href="${'/incidences/edit/' +incidence.id}">Modificar</a></td>					
+							<td><a th:href="${'/incidences/edit/' +incidence.id}">Modificar</a></td>					
 							<td ><a th:if="${not incidence.Closed()}" th:id="close${incidence.name}"
 								th:href="${'/incidences/close/' +incidence.id}">Cerrar
 									Incidencia</a></td>
@@ -53,44 +53,5 @@
 	</div>
 </body>
 
-<script th:inline="javascript">
-function actualizarIncidencias(){
-	
-	$.ajax({
-		url: "http://localhost:8090/incidences/list/update" ,
-		type: "GET",
-		data: { },
-		dataType: 'json',
-		success: function(respuesta){
-			actualizarTabla(respuesta);
-		},
-		error: function(error){
-			console.log(error);
-		}
-	});	
-}
-
-function actualizarTabla(respuesta){
-	$("#bodyIncidencias").empty();
-	console.log(respuesta);
-	for(let i=0;i<respuesta.length;i++){	
-		var incidencia = respuesta[i];
-		var	texto = "<tr >" + 
-			"<td>" + incidencia.id + "</td>" +
-			"<td>" + incidencia.name + "</td>" +
-			"<td>" + incidencia.description + "</td>" + 
-			"<td>" + incidencia.nombreAgente + "</td>" +
-			"<td>" + incidencia.state + "</td>"+
-			"<td>"  + "<a href="+'/incidences/details/' +incidencia.id+">Detalles</a></td>"+
-			"<td>"  + "<a href="+'/incidences/edit/' +incidencia.id+">Detalles</a></td>"+
-			"</tr>";
-		
-			$('#bodyIncidencias').append(texto));
-		
-	}
-}
-
-setInterval(actualizarIncidencias, 5000);
-</script>
 
 </html>
