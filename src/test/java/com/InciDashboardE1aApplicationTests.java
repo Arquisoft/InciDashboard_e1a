@@ -1,8 +1,11 @@
-package com.uniovi;
+package com;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import com.uniovi.IncidenceTest;
+import com.uniovi.OperatorTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

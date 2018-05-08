@@ -9,14 +9,21 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.IntegrationTest;
+import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.selenium.PO_Incidences;
 import com.selenium.PO_Login;
 import com.selenium.PO_NavView;
 import com.selenium.PO_View;
+import com.uniovi.InciDashboardE1aApplication;
 import com.uniovi.entities.Incidence;
 import com.uniovi.entities.Operator;
 import com.uniovi.entities.Status;
@@ -28,6 +35,10 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 
+
+@ContextConfiguration(classes=InciDashboardE1aApplication.class, loader=SpringApplicationContextLoader.class)
+@IntegrationTest
+@WebAppConfiguration
 public class StepsTest {
 
 	@Autowired
@@ -105,5 +116,10 @@ public class StepsTest {
 	    PO_Incidences.changeState(driver, arg1, Status.CANCELLED);
 	}
 	
-
+	@Entonces("^ve las incidencias asignadas$")
+	public void ve_las_incidencias_asignadas() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+	
 }

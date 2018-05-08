@@ -1,4 +1,4 @@
-package com.uniovi;
+package com;
 
 import org.junit.runner.RunWith;
 
