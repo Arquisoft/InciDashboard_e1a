@@ -69,7 +69,7 @@ public class IncidenceController {
 		JSONArray serialized = new JSONArray();
 		incidences.forEach(x -> serialized.put(x.toJson()));
 
-		return serialized.toString();
+		return "{ incidences :"+serialized.toString()+"}";
 	}
 
 	@RequestMapping("/incidences/details/{id}")

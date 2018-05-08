@@ -39,7 +39,7 @@ public class StepsTest {
 	public void que_nos_conectamos_al_dashboard() throws Throwable {
 		
 		driver = new HtmlUnitDriver();
-		baseUrl = "http://localhost:8090/";
+		baseUrl = "http://localhost:9090/";
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		driver.get(baseUrl + "/");
 		

@@ -53,14 +53,16 @@
 	</div>
 </body>
 
+<!--  
 <script th:inline="javascript">
 function actualizarIncidencias(){
 	
 	$.ajax({
-		url: "http://localhost:8090/incidences/list/update" ,
+		url: "http://localhost:9090/incidences/list/update" ,
 		type: "GET",
 		data: { },
 		dataType: 'json',
+		contentType: "application/json",
 		success: function(respuesta){
 			console.log(respuesta);
 			actualizarTabla(respuesta);
@@ -74,8 +76,9 @@ function actualizarIncidencias(){
 function actualizarTabla(respuesta){
 	$("#bodyIncidencias").empty();
 	console.log(respuesta);
-	for(let i=0;i<respuesta.length;i++){	
-		var incidencia = respuesta[i];
+	var respuesta2 = respuesta.incidences
+	for(let i=0;i<respuesta2.length;i++){	
+		var incidencia = respuesta2[i];
 		var	texto = "<tr >" + 
 			"<td>" + incidencia.id + "</td>" +
 			"<td>" + incidencia.name + "</td>" +
@@ -96,5 +99,6 @@ setInterval(function() {
 }, 3000);
 
 </script>
+-->
 
 </html>
