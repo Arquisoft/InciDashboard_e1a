@@ -10,7 +10,8 @@ import com.uniovi.OperatorTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         OperatorTest.class,
-        IncidenceTest.class
+        IncidenceTest.class,
+        CucumberTest.class
 })
 
 public class InciDashboardE1aApplicationTests {
