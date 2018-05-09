@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
-@Table(name = "Incidencias")
 public class Incidence {
 
 	/*

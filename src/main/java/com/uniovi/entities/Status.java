@@ -7,5 +7,6 @@ public enum Status {
 	OPENED,
 	CLOSED,
 	ASSIGNED,
-	CANCELLED
+	CANCELLED,
+	IN_PROCESS
 }

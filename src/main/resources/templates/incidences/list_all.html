@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<head th:replace="fragments/head" />
+<body>
+	<nav th:replace="fragments/nav" />
+	<div id="container">
+
+		<div>
+			<div>
+				<h3>Incidencias</h3>
+				<form class="navbar-form" action="/incidences/list">
+					<div class="form-group">
+						<input name="searchText" type="text" class="form-control"
+							size="50" placeholder="Buscar por descripci�n o nombre o tags" />
+					</div>
+					<button type="submit" class="btn btn-default">Buscar</button>
+				</form>
+
+				<p>Lista de las incidencias</p>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover" id="tablaIncidencias">
+					<thead>
+						<tr>
+							<th class="col-md-1">ID</th>
+							<th class="col-md-1">Nombre</th>
+							<th class="col-md-1">Descripcion</th>
+							<th class="col-md-1">Agente</th>
+							<th class="col-md-1">State</th>
+						</tr>
+					</thead>
+					<tbody id="bodyIncidencias">
+						<tr id="incidences" th:fragments="incidences"
+							th:each="incidence : ${incidences}">
+							<td th:text="${incidence.id}"></td>
+							<td th:text="${incidence.name}"></td>
+							<td th:text="${incidence.description}"></td>
+							<td th:text="${incidence.nombreAgente}"></td>
+							<td th:text="${incidence.state}"></td>
+							<td><a th:href="${'/incidences/details/' + incidence.id}">Detalles</a></td>
+							<td><a th:id="'modify'+${incidence.name}" th:href="${'/incidences/edit/' + incidence.id}">Modificar</a></td>					
+							<td ><a th:if="${not incidence.Closed()}" th:id="'close'+${incidence.name}"
+								th:href="${'/incidences/close/' +incidence.id}">Cerrar
+									Incidencia</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<footer class="footer" th:replace="fragments/footer :: footer" />
+	</div>
+</body>
+
+<!--  
+<script th:inline="javascript">
+function actualizarIncidencias(){
+	
+	$.ajax({
+		url: "http://localhost:9090/incidences/list/update" ,
+		type: "GET",
+		data: { },
+		dataType: 'json',
+		contentType: "application/json",
+		success: function(respuesta){
+			console.log(respuesta);
+			actualizarTabla(respuesta);
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});	
+}
+
+function actualizarTabla(respuesta){
+	$("#bodyIncidencias").empty();
+	console.log(respuesta);
+	var respuesta2 = respuesta.incidences
+	for(let i=0;i<respuesta2.length;i++){	
+		var incidencia = respuesta2[i];
+		var	texto = "<tr >" + 
+			"<td>" + incidencia.id + "</td>" +
+			"<td>" + incidencia.name + "</td>" +
+			"<td>" + incidencia.description + "</td>" + 
+			"<td>" + incidencia.nombreAgente + "</td>" +
+			"<td>" + incidencia.state + "</td>"+
+			"<td>"  + "<a href="+'/incidences/details/' +incidencia.id+">Detalles</a></td>"+
+			"<td>"  + "<a href="+'/incidences/edit/' +incidencia.id+">Detalles</a></td>"+
+			"</tr>";
+		
+			$('#bodyIncidencias').append(texto);
+		
+	}
+}
+
+setInterval(function() {
+	actualizarIncidencias();
+}, 3000);
+
+</script>
+-->
+
+</html>

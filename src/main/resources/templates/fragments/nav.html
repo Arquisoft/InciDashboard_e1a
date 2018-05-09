@@ -10,8 +10,10 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-				<li><a id="userList" th:text="#{listIncidences}"
-					href="/incidences/list">Ver Incidencias</a></li>
+				<li><a id="userList" 
+					href="/incidences/list/all">Ver todas las incidencias</a></li>
+				<li><a id="userList"
+					href="/incidences/list">Ver Incidencias Asignadas</a></li>
 				<li><a id="stadistics" th:text="#{stadistics}"
 					href="/stadistics">Estadisticas</a></li>
 			</ul>

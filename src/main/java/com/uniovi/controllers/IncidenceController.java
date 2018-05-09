@@ -49,6 +49,28 @@ public class IncidenceController {
 
 		return "incidences/list";
 	}
+	
+	@RequestMapping(value = "/incidences/list/all", method = RequestMethod.GET)
+	public String listAll(Model model, @RequestParam(value = "", required = false) String searchText) {
+
+		Operator operator = operatorService.getOperator();// Operador especifico
+		
+		List<Incidence> incidences;
+		List<Notification> notifications;
+
+		if (searchText == null || searchText.isEmpty()) {
+			incidences = incidenceService.findAll();
+		} else {
+			incidences = incidenceService.searchIncidencesByNameAndDescription(searchText, operator);
+		}
+		notifications = new ArrayList<Notification>();
+
+		// Añado todo al modelo
+		model.addAttribute("operator", operator);
+		model.addAttribute("incidences", incidences);
+
+		return "incidences/list_all";
+	}
 
 	@RequestMapping(value = "/incidences/list/update", method = RequestMethod.GET, produces = "application/json")
 	public String listar(Model model, @RequestParam(value = "", required = false) String searchText) {
